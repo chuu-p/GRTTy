@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package example;
+
+service HealthCheckService {
+  rpc CheckHealth(HealthCheckRequest) returns (HealthCheckReply) {}
+}
+message HealthCheckRequest {}
+message HealthCheckReply {}
