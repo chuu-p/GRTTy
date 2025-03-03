@@ -1,0 +1,36 @@
+[package]
+name = "example-api"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+prost = "0.13"
+tower-layer = "0.3.3"
+http = "1"
+hyper = "1"
+hyper-util = "0.1.4"
+bytes = "1"
+tracing = "0.1.16"
+tokio = { version = "1.43.0", features = ["full"] }
+tokio-stream = { version = "0.1.17", features = ["full"] }
+tonic = "0.12.3"
+tonic-web = "0.12.3"
+tower = "0.5.2"
+tower-http = { version = "0.6.2", features = [
+    "cors",
+    "compression-full",
+    "fs",
+] }
+dotenvy = "0.15.7"
+prost-types = "0.13.5"
+log = "0.4.26"
+# tokio-cron-scheduler = { version = "0.13.0", features = ["signal"] }
+chrono = { version = "0.4.39", features = ["serde"] }
+diesel = { version = "2.2.7", features = ["chrono", "returning_clauses_for_sqlite_3_35", "sqlite"] }
+diesel_migrations = { version = "2.2.0", features = ["sqlite"] }
+
+[build-dependencies]
+tonic-build = "*"
+
+[dev-dependencies]
+tokio-stream = { version = "0.1.17", features = ["net"] }
