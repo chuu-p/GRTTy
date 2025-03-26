@@ -2,8 +2,27 @@ syntax = "proto3";
 
 package example;
 
-service HealthCheckService {
-  rpc CheckHealth(HealthCheckRequest) returns (HealthCheckReply) {}
+message Todo {
+  int64 id = 1;
+  string title = 2;
+  string description = 3;
+  bool completed = 4;
 }
-message HealthCheckRequest {}
-message HealthCheckReply {}
+
+message TodoId {
+  int64 id = 1;
+}
+
+message TodoList {
+  repeated Todo todos = 1;
+}
+
+message Empty {}
+
+service TodoService {
+  rpc AddTodo (Todo) returns (Todo);
+  rpc GetTodos (Empty) returns (TodoList);
+  rpc DeleteTodo (TodoId) returns (Empty);
+  rpc UpdateTodo (Todo) returns (Todo);
+}
+

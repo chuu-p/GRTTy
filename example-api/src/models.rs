@@ -1,18 +1,22 @@
-use chrono::NaiveDateTime;
 use diesel::{prelude::*, sqlite::Sqlite};
 
-use crate::schema::health_checks;
+use crate::schema::todos;
 
-#[derive(Queryable, Selectable, Debug, Clone, Copy)]
-#[diesel(table_name = health_checks)]
+#[derive(Queryable, Selectable, Debug, Clone)]
+#[diesel(table_name = todos)]
 #[diesel(check_for_backend(Sqlite))]
-pub struct HealthCheck {
+pub struct Todo {
     pub id: i32,
-    pub timestamp: NaiveDateTime
+    pub title: String,
+    pub description: Option<String>,
+    pub completed: bool,
 }
 
 #[derive(Insertable)]
-#[diesel(table_name = health_checks)]
-pub struct NewHealthCheck {
-    pub timestamp: NaiveDateTime
+#[diesel(table_name = todos)]
+pub struct NewTodo {
+    pub title: String,
+    pub description: Option<String>,
+    pub completed: bool,
 }
+

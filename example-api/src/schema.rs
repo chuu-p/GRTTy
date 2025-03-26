@@ -1,8 +1,10 @@
 // @generated automatically by Diesel CLI.
 
 diesel::table! {
-    health_checks (id) {
+    todos (id) {
         id -> Integer,
-        timestamp -> Timestamp,
+        title -> Text,
+        description -> Nullable<Text>,
+        completed -> Bool,
     }
 }
